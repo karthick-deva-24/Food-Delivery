@@ -141,17 +141,13 @@
                     <!-- SECTION 3: Social Sign-In -->
                     <div class="divider">Or Sign In With</div>
                     <div class="social-login">
-                        <button class="social-btn"><i class="fab fa-google" style="color: #ea4335"></i> Google</button>
-                        <button class="social-btn"><i class="fab fa-apple" style="color: #000000"></i> Apple</button>
+                        <button class="social-btn" onclick="window.location.href='404.html'"><i class="fab fa-google" style="color: #ea4335"></i> Google</button>
+                        <button class="social-btn" onclick="window.location.href='404.html'"><i class="fab fa-apple" style="color: #000000"></i> Apple</button>
                     </div>
                 </div>
             </div>
         </section>
-
-
     </main>
-
-
 
     <!-- AOS & GSAP CDN Libraries -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -165,8 +161,6 @@
             const email = document.getElementById('reg-email').value;
             const role = document.getElementById('reg-role').value;
             
-            alert('Registration successful! Welcome to the Stackly family, ' + name + '. Redirecting to login page...');
-            
             // Prefill email field on login tab
             const loginEmail = document.getElementById('login-email');
             if (loginEmail) {
@@ -179,11 +173,55 @@
                 loginRole.value = role;
             }
             
-            // Switch tabs
+            // Switch to login tab without any alert popup
             const loginTab = document.querySelector('.login-tab[data-tab="login"]');
             if (loginTab) {
                 loginTab.click();
             }
+
+            // Show a toast notification instead of alert
+            const existingToast = document.getElementById('reg-success-toast');
+            if (existingToast) existingToast.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'reg-success-toast';
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-20px);
+                background: linear-gradient(135deg, #2e7d32, #43a047);
+                color: #ffffff;
+                padding: 16px 32px;
+                border-radius: 50px;
+                font-weight: 700;
+                font-family: var(--font-sans);
+                box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+                z-index: 10000;
+                opacity: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                white-space: nowrap;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            `;
+            toast.innerHTML = `<span>✔</span> Account created! Welcome to Stackly, ${name}!`;
+            document.body.appendChild(toast);
+
+            // Animate in
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.style.opacity = '1';
+                    toast.style.transform = 'translateX(-50%) translateY(0)';
+                });
+            });
+
+            // Animate out after 3.5s
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(-20px)';
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
         }
     </script>
 </body>

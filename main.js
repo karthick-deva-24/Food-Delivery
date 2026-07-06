@@ -572,3 +572,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Global newsletter subscribe handler — redirects to 404.html on submit
+window.handleNewsletterSubscribe = function(event) {
+    event.preventDefault();
+    const emailInput = event.target.querySelector('input[type="email"]');
+    if (!emailInput) return;
+
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    window.location.href = '404.html';
+};
