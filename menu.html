@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the rich and delicious Stackly menu. Order Turkish pizzas, succulent kebabs, sweet desserts, and more online.">
+    <title>Stackly | Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- SECTION 1: Takeout Box Preloader (Image 2) -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Loading Menu...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="nav-icon" aria-label="Profile"><i class="fas fa-user"></i></a>
+                <button class="nav-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: Page Hero Banner -->
+        <section class="page-hero">
+            <h1>Our Culinary Menu</h1>
+            <div class="page-breadcrumbs">
+                <a href="index.html">Home</a> / <span>Menu</span>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Category Filter Tabs -->
+        <section class="bg-white" style="padding-bottom: 20px;">
+            <div class="menu-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All Dishes</button>
+                <button class="filter-btn" data-filter="chicken">Chicken</button>
+                <button class="filter-btn" data-filter="meat">Meat &amp; Fish</button>
+                <button class="filter-btn" data-filter="burgers">Burgers</button>
+                <button class="filter-btn" data-filter="desserts">Desserts</button>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Dish Explorer Grid -->
+        <section class="bg-white" style="padding-top: 0;">
+            <div class="dishes-grid">
+                <!-- Chicken items -->
+                <div class="dish-card" data-category="chicken" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_8.jpg" alt="Tavuk Sis">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (85+ reviews)</div>
+                        <h3 class="dish-title">Tavuk Şiş (Chicken Shish)</h3>
+                        <p class="dish-desc">Skewered cubes of marinated tender chicken breast, char-grilled with peppers and onions.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$15.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="chicken" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_9.jpg" alt="Tavuk Kanat">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.7 (72+ reviews)</div>
+                        <h3 class="dish-title">Tavuk Kanat (Chicken Wings)</h3>
+                        <p class="dish-desc">Spicy marinated chicken wings slow-cooked over red coal. Incredibly crispy outside, juicy inside.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$13.50</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meat & Fish items -->
+                <div class="dish-card" data-category="meat" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_5.jpg" alt="Beef Shish">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (110+ reviews)</div>
+                        <h3 class="dish-title">Kuzu Şiş (Lamb Shish)</h3>
+                        <p class="dish-desc">Charcoal-grilled skewered tender lamb pieces marinated in spices and yogurt. Incredibly juicy.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$19.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="meat" data-aos="fade-up" data-aos-delay="400">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_1.jpg" alt="Adana Kebab">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (156+ reviews)</div>
+                        <h3 class="dish-title">Signature Adana Kebab</h3>
+                        <p class="dish-desc">Long minced hand-cleaved lamb seasoned with red pepper flakes and charcoal flame-grilled.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$18.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="meat" data-aos="fade-up" data-aos-delay="500">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_10.jpg" alt="Levrek">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (43+ reviews)</div>
+                        <h3 class="dish-title">Levrek (Grilled Sea Bass)</h3>
+                        <p class="dish-desc">Fresh whole sea bass lightly seasoned with olive oil and herbs, char-grilled to lock in tenderness.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$24.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Burgers -->
+                <div class="dish-card" data-category="burgers" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_6.jpg" alt="Turkish Burger">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.7 (64+ reviews)</div>
+                        <h3 class="dish-title">Stackly Kofta Burger</h3>
+                        <p class="dish-desc">Kofta-spiced double beef patty topped with feta, fresh mint, and garlic sauce in a toasted brioche.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$14.50</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="burgers" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_11.jpg" alt="Spicy Sujuk Burger">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (81+ reviews)</div>
+                        <h3 class="dish-title">Spicy Sujuk Burger</h3>
+                        <p class="dish-desc">A premium patty layered with grilled sujuk (Turkish spicy sausage), cheddar, and garlic tomato paste.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$13.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="dish-card" data-category="desserts" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_7.jpg" alt="Baklava">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (210+ reviews)</div>
+                        <h3 class="dish-title">Pistachio Baklava (4 pcs)</h3>
+                        <p class="dish-desc">Crispy phyllo layers filled with crushed premium pistachios and sweetened with syrup.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$8.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="desserts" data-aos="fade-up" data-aos-delay="400">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_3.jpg" alt="Kunefe">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (189+ reviews)</div>
+                        <h3 class="dish-title">Hot Cheese Künefe</h3>
+                        <p class="dish-desc">Crispy cheese pastry soaked in sweet syrup, served sizzling hot and topped with pistachios.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$9.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card" data-category="desserts" data-aos="fade-up" data-aos-delay="500">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_12.jpg" alt="Sutlac">
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (94+ reviews)</div>
+                        <h3 class="dish-title">Fırın Sütlaç (Baked Pudding)</h3>
+                        <p class="dish-desc">Traditional baked rice pudding caramelized on top, served cold with crushed hazelnuts.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$6.50</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Chef's Recommendation -->
+        <section class="bg-gray">
+            <div class="chef-special-banner" data-aos="fade-up">
+                <img class="special-img" src="assets/dish_4.jpg" alt="Royal Feast Platter">
+                <div class="special-content">
+                    <span class="section-tag">Grand Choice</span>
+                    <h2>The Sultan's Royal Feast</h2>
+                    <p>Perfect for families or hungry individuals. Features a combination of Adana Kebab, Lamb Shish, Chicken Wings, Lamb Chops, Turkish rice, hummus, and freshly baked flatbreads.</p>
+                    <div style="font-size: 2rem; font-weight:800; color: var(--primary); margin-bottom: 20px;">$49.99</div>
+                    <button class="btn-primary" data-cart="true">Order Platter Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Delivery Steps -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">How It Works</span>
+                <h2 class="section-title">Order Food in 3 Simple Steps</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="step-num">01</span>
+                    <div class="step-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Choose Your Feast</h3>
+                    <p>Select from our gourmet collection of grills, mezze platters, and authentic Turkish sweets.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="step-num">02</span>
+                    <div class="step-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Secure Checkout</h3>
+                    <p>Pay quickly with credit card, PayPal, or Cash on Delivery, all encrypted and secured.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="step-num">03</span>
+                    <div class="step-icon"><i class="fas fa-motorcycle"></i></div>
+                    <h3>Fast Doorstep Delivery</h3>
+                    <p>Our dedicated delivery fleet ensures your kebabs arrive hot and ready to enjoy.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About Stackly</h3>
+                <p>Stackly is dedicated to bringing the rich, aromatic flavors of traditional Turkish cooking straight to your dinner table. Quality ingredients, fast delivery, and premium taste.</p>
+                <div class="footer-socials">
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Opening Hours</h3>
+                <ul class="footer-links">
+                    <li>Monday - Friday: 11am - 11pm</li>
+                    <li>Saturday: 10am - 11pm</li>
+                    <li>Sunday: 10am - 10pm</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Bazaars Way, Istanbul Suite 34</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-TURK</li>
+                    <li><i class="fas fa-envelope"></i> contact@Stackly.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Stackly. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

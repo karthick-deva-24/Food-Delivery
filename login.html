@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to your Stackly account. Manage orders, redeem reward points, and configure delivery profiles.">
+    <title>Stackly | Account Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- SECTION 1: Takeout Box Preloader (Image 2) -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Securing Connection...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="nav-icon" aria-label="Profile"><i class="fas fa-user"></i></a>
+                <button class="nav-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: Page Hero Banner -->
+        <section class="page-hero">
+            <h1>Account Center</h1>
+            <div class="page-breadcrumbs">
+                <a href="index.html">Home</a> / <span>Login</span>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Form Panel (Login/Signup togglable) -->
+        <section class="bg-white">
+            <div class="login-split-card" data-aos="zoom-in">
+                <!-- Left Banner Pane -->
+                <div class="login-left-banner">
+                    <div>
+                        <span class="section-tag" style="color: var(--accent);">Stackly Club</span>
+                        <h2>A Banquet of Flavors Awaits</h2>
+                    </div>
+                    <div>
+                        <p>Sign in to unlock free delivery, track your sizzling grills in real-time, and collect loyalty coins on every plate.</p>
+                    </div>
+                </div>
+
+                <!-- Right Form Pane -->
+                <div class="login-right-form">
+                    <div class="login-tabs">
+                        <div class="login-tab active" data-tab="login">Log In</div>
+                        <div class="login-tab" data-tab="register">Register</div>
+                    </div>
+
+                    <!-- Login Form Box -->
+                    <div id="login-form-box">
+                        <form onsubmit="event.preventDefault(); localStorage.setItem('userEmail', document.getElementById('login-email').value); localStorage.setItem('userName', document.getElementById('login-email').value.split('@')[0].toUpperCase()); window.location.href = 'dashboard.html?role=' + document.getElementById('login-role').value;">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="login-email">Email Address</label>
+                                <input type="email" id="login-email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="login-role">Choose Dashboard Role</label>
+                                <select id="login-role" required style="width:100%; padding:14px; border-radius:12px; border:2px solid rgba(184, 29, 36, 0.2); font-family:var(--font-sans); font-size:1rem; font-weight:700; color:var(--text-dark); background-color:var(--bg-light); transition:var(--transition); outline:none;">
+                                    <option value="foodie">Foodie Role</option>
+                                    <option value="manager">Manager Role</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 10px;">
+                                <label for="login-pass">Password</label>
+                                <input type="password" id="login-pass" required placeholder="••••••••">
+                            </div>
+                            <div class="remember-forgot">
+                                <label><input type="checkbox"> Remember Me</label>
+                                <a href="404.html">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 30px;">Login &amp; Enter Dashboard</button>
+                        </form>
+                    </div>
+
+                    <!-- Register Form Box (hidden initially) -->
+                    <div id="register-form-box" style="display: none;">
+                        <form onsubmit="handleRegistration(event)">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="reg-name">Full Name</label>
+                                <input type="text" id="reg-name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="reg-email">Email Address</label>
+                                <input type="email" id="reg-email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="reg-role">Choose Dashboard Role</label>
+                                <select id="reg-role" required style="width:100%; padding:14px; border-radius:12px; border:2px solid rgba(184, 29, 36, 0.2); font-family:var(--font-sans); font-size:1rem; font-weight:700; color:var(--text-dark); background-color:var(--bg-light); transition:var(--transition); outline:none;">
+                                    <option value="foodie">Foodie Role</option>
+                                    <option value="manager">Manager Role</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="reg-pass">Password</label>
+                                <input type="password" id="reg-pass" required placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Create Account</button>
+                        </form>
+                    </div>
+
+                    <!-- SECTION 3: Social Sign-In -->
+                    <div class="divider">Or Sign In With</div>
+                    <div class="social-login">
+                        <button class="social-btn"><i class="fab fa-google" style="color: #ea4335"></i> Google</button>
+                        <button class="social-btn"><i class="fab fa-apple" style="color: #000000"></i> Apple</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        function handleRegistration(event) {
+            event.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const role = document.getElementById('reg-role').value;
+            
+            alert('Registration successful! Welcome to the Stackly family, ' + name + '. Redirecting to login page...');
+            
+            // Prefill email field on login tab
+            const loginEmail = document.getElementById('login-email');
+            if (loginEmail) {
+                loginEmail.value = email;
+            }
+
+            // Sync registered role to login form role selector
+            const loginRole = document.getElementById('login-role');
+            if (loginRole) {
+                loginRole.value = role;
+            }
+            
+            // Switch tabs
+            const loginTab = document.querySelector('.login-tab[data-tab="login"]');
+            if (loginTab) {
+                loginTab.click();
+            }
+        }
+    </script>
+</body>
+</html>

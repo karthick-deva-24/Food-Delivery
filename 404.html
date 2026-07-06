@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recipe not found. The page you requested has been spilled or moved off the table. Return to Stackly's kitchen.">
+    <title>Stackly | Recipe Not Found (404)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Takeout Box Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Finding the Recipe...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="nav-icon" aria-label="Profile"><i class="fas fa-user"></i></a>
+                <button class="nav-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: Error Info Pane -->
+        <section class="error-section">
+            <div class="error-container">
+                <div class="error-img-wrapper">
+                    <img src="assets/spilled_coffee.webp" alt="Spilled Turkish Coffee Illustration">
+                </div>
+                <h1 class="error-title">404</h1>
+                <h2 class="error-subtitle">Oh Spit! The Recipe is Missing</h2>
+                <p class="error-desc">The page you are looking for has been spilled, eaten, or moved off the table. Let's get you something fresh from the kitchen!</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="window.history.back()" class="btn-primary" style="background-color: var(--text-dark); border-color: var(--text-dark); color: var(--text-light);"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Back to Previous Page</button>
+                    <a href="index.html" class="btn-primary"><i class="fas fa-home" style="margin-right: 8px;"></i>Back to Home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stackly - Authentic Turkish Food Delivery. Experience premium culinary delights delivered right to your doorstep.">
+    <title>Stackly | Authentic Turkish Food Delivery</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- SECTION 1: Takeout Box Preloader (Image 2) -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Takeout Box Body -->
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <!-- Takeout Box Flaps -->
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <!-- Wire Handle -->
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Stackly Loading...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation (Theme match Image 1) -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="nav-icon" aria-label="Profile"><i class="fas fa-user"></i></a>
+                <button class="nav-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Hero Slider Section -->
+    <main>
+        <section class="hero-slider" style="padding:0">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('assets/hero_1.jpg');">
+                <div class="slide-content">
+                    <div class="slide-subtitle">Our Dishes Are</div>
+                    <h1 class="slide-title"><span>Turkish Food</span></h1>
+                    <a href="menu.html" class="btn-primary">Shop Now</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('assets/hero_2.jpg');">
+                <div class="slide-content">
+                    <div class="slide-subtitle">Authentic &amp; Warm</div>
+                    <h1 class="slide-title"><span>Sweet Baklava</span></h1>
+                    <a href="menu.html" class="btn-primary">Order Sweets</a>
+                </div>
+            </div>
+            <!-- Slider Buttons -->
+            <button class="slider-btn prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <!-- SECTION 3: Category Quick Grid -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Quick Categories</span>
+                <h2 class="section-title">What are you craving?</h2>
+            </div>
+            <div class="category-grid">
+                <a href="menu.html?cat=chicken" class="category-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-icon"><i class="fas fa-drumstick-bite"></i></div>
+                    <h3>Chicken</h3>
+                </a>
+                <a href="menu.html?cat=meat" class="category-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-icon"><i class="fas fa-fish"></i></div>
+                    <h3>Meat &amp; Fish</h3>
+                </a>
+                <a href="menu.html?cat=burgers" class="category-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-icon"><i class="fas fa-hamburger"></i></div>
+                    <h3>Burgers</h3>
+                </a>
+                <a href="menu.html?cat=desserts" class="category-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="category-icon"><i class="fas fa-ice-cream"></i></div>
+                    <h3>Desserts</h3>
+                </a>
+                <a href="about.html" class="category-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="category-icon"><i class="fas fa-newspaper"></i></div>
+                    <h3>Blog</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 4: story teaser -->
+        <section class="bg-gray">
+            <div class="story-container">
+                <div class="story-img-wrapper" data-aos="fade-right">
+                    <img class="story-img" src="assets/story.jpg" alt="Traditional Turkish Kitchen">
+                    <div class="story-badge">
+                        <h4>100%</h4>
+                        <p>Authentic Recipes</p>
+                    </div>
+                </div>
+                <div class="story-content" data-aos="fade-left">
+                    <span class="section-tag">Since 1994</span>
+                    <h2>Bringing Turkish Heritage Straight to Your Plate</h2>
+                    <p>We source all our secret spices directly from the Grand Bazaar in Istanbul. Our slow-cooked meats, flame-grilled to perfection, carry the traditional legacy of Turkish culinary masters.</p>
+                    <a href="about.html" class="btn-primary">Learn Our Story</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Popular Dishes Grid -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Best Sellers</span>
+                <h2 class="section-title">Most Popular Platers</h2>
+            </div>
+            <div class="dishes-grid">
+                <!-- Dish 1 -->
+                <div class="dish-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_1.jpg" alt="Adana Kebab">
+                        <span class="dish-tag">Chef's Choice</span>
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (120+ reviews)</div>
+                        <h3 class="dish-title">Signature Adana Kebab</h3>
+                        <p class="dish-desc">Minced lamb mounted on a wide iron skewer, grilled over charcoal. Served with flatbread.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$18.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dish 2 -->
+                <div class="dish-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_2.jpg" alt="Lahmacun">
+                        <span class="dish-tag">Popular</span>
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (95+ reviews)</div>
+                        <h3 class="dish-title">Lahmacun (Turkish Pizza)</h3>
+                        <p class="dish-desc">Thin, crispy dough topped with minced meat, vegetables, and aromatic spices.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$12.50</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dish 3 -->
+                <div class="dish-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dish-img-wrapper">
+                        <img class="dish-img" src="assets/dish_3.jpg" alt="Kunefe">
+                        <span class="dish-tag">Sweet</span>
+                    </div>
+                    <div class="dish-details">
+                        <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (150+ reviews)</div>
+                        <h3 class="dish-title">Hot Cheese Kunefe</h3>
+                        <p class="dish-desc">Crispy cheese pastry soaked in sweet sugar syrup, topped with ground pistachios.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$9.99</span>
+                            <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Special Offers Banner -->
+        <section class="bg-gray" style="padding: 40px 24px">
+            <div class="offer-banner" data-aos="fade-up">
+                <div class="offer-content">
+                    <h3>Limited Time Only</h3>
+                    <h2>Get 25% Off Your First Turkish Banquet</h2>
+                    <p>Experience the finest blend of spices and tender grilled meat today.</p>
+                    <div class="offer-code">CODE: Stackly25</div>
+                </div>
+                <div class="offer-img-wrapper">
+                    <img class="offer-img" src="assets/dish_4.jpg" alt="Turkish Platter Offer">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: Testimonials -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Reviews</span>
+                <h2 class="section-title">What Our Guests Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-right">
+                    <div class="client-info">
+                        <img class="client-img" src="assets/chef_1.jpg" alt="Sarah J.">
+                        <div>
+                            <h4 class="client-name">Sarah Jenkins</h4>
+                            <span class="client-role">Verified Gourmet</span>
+                        </div>
+                    </div>
+                    <p class="quote-text">"The Adana Kebab tastes exactly like what I had in Istanbul. The spices are robust, and the delivery was blazing fast!"</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-left">
+                    <div class="client-info">
+                        <img class="client-img" src="assets/chef_2.jpg" alt="David K.">
+                        <div>
+                            <h4 class="client-name">David Kovic</h4>
+                            <span class="client-role">Local Foodie</span>
+                        </div>
+                    </div>
+                    <p class="quote-text">"I order from Stackly at least twice a week. The Kunefe is still warm when it arrives, and the syrup is perfect!"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: Mobile App Promotion -->
+        <section class="bg-gray">
+            <div class="app-section">
+                <div class="app-content" data-aos="fade-right">
+                    <span class="section-tag">Download App</span>
+                    <h2>Order Your Favorite Plates on the Go</h2>
+                    <p>Track your delivery in real-time, customize your platters, and get exclusive in-app coupons. Available for iOS and Android.</p>
+                    <div class="store-buttons">
+                        <a href="404.html" class="store-btn"><i class="fab fa-apple"></i> App Store</a>
+                        <a href="404.html" class="store-btn"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+                <div class="app-img-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                    <img class="app-img" src="assets/app_mockup.webp" alt="Stackly Mobile Application UI Mockup">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: FAQ Accordion -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container" data-aos="fade-up">
+                <div class="faq-item">
+                    <div class="faq-header">What are your delivery hours? <i class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-body">We deliver daily from 11:00 AM to 11:00 PM, ensuring you get freshly cooked Turkish food right for lunch or dinner.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">Do you have vegetarian and vegan options? <i class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-body">Yes! We offer traditional vegetarian plates including our Mezze Platter, Falafel, and Hummus rolls.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">Can I schedule an order in advance? <i class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-body">Absolutely. You can choose to schedule your delivery up to 7 days in advance during checkout.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 10: Newsletter -->
+        <section class="bg-gray" style="padding: 60px 24px">
+            <div class="newsletter-card" data-aos="zoom-in">
+                <h2>Join the Stackly Family</h2>
+                <p>Subscribe to receive secret recipes, discount coupons, and notifications of new seasonal dishes.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About Stackly</h3>
+                <p>Stackly is dedicated to bringing the rich, aromatic flavors of traditional Turkish cooking straight to your dinner table. Quality ingredients, fast delivery, and premium taste.</p>
+                <div class="footer-socials">
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Opening Hours</h3>
+                <ul class="footer-links">
+                    <li>Monday - Friday: 11am - 11pm</li>
+                    <li>Saturday: 10am - 11pm</li>
+                    <li>Sunday: 10am - 10pm</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Bazaars Way, Istanbul Suite 34</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-TURK</li>
+                    <li><i class="fas fa-envelope"></i> contact@Stackly.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Stackly. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Global Javascript -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Stackly. Submit support tickets, contact our main kitchen, or find directions to our restaurant.">
+    <title>Stackly | Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- SECTION 1: Takeout Box Preloader (Image 2) -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Loading Contact...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="nav-icon" aria-label="Profile"><i class="fas fa-user"></i></a>
+                <button class="nav-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: Page Hero Banner -->
+        <section class="page-hero">
+            <h1>Get In Touch</h1>
+            <div class="page-breadcrumbs">
+                <a href="index.html">Home</a> / <span>Contact</span>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Contact Info Cards -->
+        <section class="bg-white">
+            <div class="contact-grid">
+                <div class="contact-info-cards" data-aos="fade-right">
+                    <div class="info-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Find Us</h4>
+                            <p>123 Bazaars Way, Istanbul Suite 34</p>
+                        </div>
+                    </div>
+                    <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Call Us</h4>
+                            <p>+1 (800) 555-TURK</p>
+                        </div>
+                    </div>
+                    <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h4>Email Us</h4>
+                            <p>contact@Stackly.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Contact Form -->
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <span class="section-tag">Send Message</span>
+                    <h2 style="font-family: var(--font-serif); margin-bottom: 20px;">We'd Love to Hear From You</h2>
+                    <form onsubmit="event.preventDefault(); alert('Message Sent successfully! We will get back to you shortly.');">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" required placeholder="How can we help?">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" required placeholder="Write your message here..."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Map & Directions -->
+        <section class="bg-gray" style="padding: 40px 24px">
+            <div class="map-section" data-aos="fade-up">
+                <div class="map-placeholder">
+                    <!-- Standard visual map mockup -->
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle, #e6ded2 20%, #d8cfc0 80%);"></div>
+                    <div class="map-overlay" data-aos="zoom-in" data-aos-delay="200">
+                        <h3 style="color: var(--primary); font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 10px;">Stackly Grand Kitchen</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Located next to the historical bazaar gates. Plenty of free parking for takeaway pickup orders.</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Helpdesk Directories Grid -->
+        <section class="bg-white">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Direct Lines</span>
+                <h2 class="section-title">Support Hubs</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Refunds &amp; Billing</h3>
+                    <p>Issues with payments, active refund requests, or gift card redemptions. email: billing@Stackly.com</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Delivery Help</h3>
+                    <p>Change your delivery address or query active delivery courier locations. hotline: ext 102</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Careers</h3>
+                    <p>We are always looking for top culinary talent and delivery drivers. portal: careers.Stackly.com</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About Stackly</h3>
+                <p>Stackly is dedicated to bringing the rich, aromatic flavors of traditional Turkish cooking straight to your dinner table. Quality ingredients, fast delivery, and premium taste.</p>
+                <div class="footer-socials">
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="404.html" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Opening Hours</h3>
+                <ul class="footer-links">
+                    <li>Monday - Friday: 11am - 11pm</li>
+                    <li>Saturday: 10am - 11pm</li>
+                    <li>Sunday: 10am - 10pm</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Bazaars Way, Istanbul Suite 34</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-TURK</li>
+                    <li><i class="fas fa-envelope"></i> contact@Stackly.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Stackly. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

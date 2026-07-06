@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stackly Control Center. View your orders, track delivery, or manage restaurant operations.">
+    <title>Stackly | Dashboards</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- Takeout Box Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <svg class="takeout-box-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 45 L70 45 L78 80 L22 80 Z" />
+                <path d="M30 45 L50 25 L70 45" />
+                <path d="M30 45 L50 35 L70 45" />
+                <path d="M26 60 C 20 40, 80 40, 74 60" />
+            </svg>
+            <div class="loader-text">Loading Dashboards...</div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img class="logo-img" src="assets/logo.jpg" alt="Stackly Logo">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="dashboard-nav">
+                    <!-- Populated dynamically by JavaScript -->
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="user-profile-badge" id="user-info-badge" style="font-size: 0.85rem; font-weight: 700; color: var(--accent); background-color: rgba(0,0,0,0.15); padding: 8px 16px; border-radius: 30px; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,204,0,0.4); text-transform: uppercase; letter-spacing: 0.5px;">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="user-display-name" style="max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle;">User</span>
+                </div>
+                <button class="nav-icon" id="logout-btn" onclick="logoutUser()" aria-label="Logout" style="background: none; border: none; color: var(--text-light); cursor: pointer; display: flex; align-items: center; gap: 5px; font-weight: 700; font-size: 0.95rem; transition: var(--transition);">
+                    <i class="fas fa-sign-out-alt" style="color: var(--accent);"></i> Logout
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+
+        <!-- ================= FOODIE DASHBOARD CONTAINER ================= -->
+        <div id="foodie-dashboard" class="dashboard-container active dashboard-section">
+            
+            <!-- Foodie Hero Subpage -->
+            <div id="foodie-dashboard-subpage" class="subpage-content active">
+                <div class="dashboard-hero" style="background-image: url('assets/foodie_banner.jpg'); background-size: cover; background-position: center;">
+                    <div class="dashboard-hero-content">
+                        <span>Welcome Back, Foodie!</span>
+                        <h2>A Feast Awaits Your Choice</h2>
+                        <p>Track your active cravings, browse personalized Turkish picks, and spend your loyalty coins on our fresh desserts.</p>
+                    </div>
+                    <div class="loyalty-coin-display">
+                        <i class="fas fa-coins coin-icon-large"></i>
+                        <div>
+                            <span class="stat-label" style="color: #856404; font-weight: 700;">Stackly Coins</span>
+                            <h3>480</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Order Tracking Timeline Subpage -->
+            <div id="order-tracker-subpage" class="subpage-content">
+                <div class="timeline-card" id="order-tracker" data-aos="fade-up">
+                    <div class="tracker-layout-container" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1.5; min-width: 300px;">
+                            <div class="table-header">
+                                <h3 class="table-title"><i class="fas fa-route" style="color: var(--primary); margin-right: 10px;"></i>Sizzling Order Tracker</h3>
+                                <span class="badge badge-preparing" id="order-status-badge">Preparing</span>
+                            </div>
+                            <p style="color: var(--text-muted); margin-bottom: 20px; font-weight: 600;">Active order: #TRK-89240 • Estimate arrival: <span id="estimate-time">25 mins</span></p>
+                            
+                            <div class="timeline-tracker">
+                                <div class="timeline-progress-bar" id="timeline-bar"></div>
+                                <div class="timeline-step completed" id="step-1">
+                                    <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+                                    <div class="step-label">Ordered</div>
+                                </div>
+                                <div class="timeline-step active" id="step-2">
+                                    <div class="step-icon"><i class="fas fa-fire"></i></div>
+                                    <div class="step-label">In Kitchen</div>
+                                </div>
+                                <div class="timeline-step" id="step-3">
+                                    <div class="step-icon"><i class="fas fa-motorcycle"></i></div>
+                                    <div class="step-label">Delivering</div>
+                                </div>
+                                <div class="timeline-step" id="step-4">
+                                    <div class="step-icon"><i class="fas fa-home"></i></div>
+                                    <div class="step-label">Arrived</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tracker-image-pane" style="flex: 1; min-width: 250px; text-align: center;">
+                            <img src="assets/delivery_tracker.webp" alt="Delivery Rider Illustration" style="max-width: 100%; max-height: 180px; border-radius: var(--border-radius); filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); transition: var(--transition);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Perks Subpage -->
+            <div id="special-perks-subpage" class="subpage-content">
+                <div class="grid-3" id="special-perks">
+                    <!-- Loyalty Rewards / Perks Card -->
+                    <div class="dash-card">
+                        <div class="stat-icon"><i class="fas fa-gift"></i></div>
+                        <h3>Claim Free Starter</h3>
+                        <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; margin-bottom: 15px;">You have enough Stackly coins to unlock a hot plate of Falafel or Sweet Baklava for free!</p>
+                        <button class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;" onclick="window.location.href='404.html'">Claim Gift</button>
+                    </div>
+
+                    <!-- Favorite Foods card -->
+                    <div class="dash-card">
+                        <div class="stat-icon" style="color: #e21c34;"><i class="fas fa-heart"></i></div>
+                        <h3>Favorite Dishes</h3>
+                        <ul style="list-style: none; margin-top: 10px;">
+                            <li style="display:flex; justify-content:space-between; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <strong>Signature Adana Kebab</strong>
+                                <a href="menu.html" style="color: var(--primary); font-weight:700; text-decoration:none;">Order Again</a>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <strong>Lahmacun Pizza</strong>
+                                <a href="menu.html" style="color: var(--primary); font-weight:700; text-decoration:none;">Order Again</a>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; padding: 8px 0;">
+                                <strong>Hot Cheese Kunefe</strong>
+                                <a href="menu.html" style="color: var(--primary); font-weight:700; text-decoration:none;">Order Again</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Custom Preference Profile -->
+                    <div class="dash-card">
+                        <div class="stat-icon" style="color: #4caf50;"><i class="fas fa-leaf"></i></div>
+                        <h3>Dietary Preference</h3>
+                        <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.95rem;">Customize recommendations to display Halal, Vegan or Gluten-Free delicacies first.</p>
+                        <div style="margin-top: 15px; display:flex; gap: 10px; flex-wrap:wrap;">
+                            <span class="badge" style="background-color: #e8f5e9; color: #2e7d32; cursor:pointer;" onclick="window.location.href='404.html'">Halal Only</span>
+                            <span class="badge" style="background-color: #fff3e0; color: #e65100; cursor:pointer;" onclick="window.location.href='404.html'">Vegan Pick</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Just For You Subpage -->
+            <div id="just-for-you-subpage" class="subpage-content">
+                <!-- Personalized Recommendations Grid -->
+                <div class="table-header" id="just-for-you" style="margin-top: 50px;">
+                    <h3 class="table-title"><i class="fas fa-sparkles" style="color: var(--accent); margin-right:10px;"></i>Just For You</h3>
+                </div>
+                
+                <div class="dishes-grid" style="margin-top: 20px;">
+                    <!-- Recommended item 1 -->
+                    <div class="dish-card">
+                        <div class="dish-img-wrapper">
+                            <img class="dish-img" src="assets/dish_1.jpg" alt="Lamb skewers">
+                            <span class="dish-tag">Recommended</span>
+                        </div>
+                        <div class="dish-details">
+                            <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (180+ reviews)</div>
+                            <h3 class="dish-title">Tender Lamb Shish</h3>
+                            <p class="dish-desc">Skewers of lamb marinated in warm garlic paste and select red peppers, charcoal grilled.</p>
+                            <div class="dish-footer">
+                                <span class="dish-price">$19.50</span>
+                                <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recommended item 2 -->
+                    <div class="dish-card">
+                        <div class="dish-img-wrapper">
+                            <img class="dish-img" src="assets/dish_2.jpg" alt="Turkish Mezze">
+                            <span class="dish-tag">Diet Pick</span>
+                        </div>
+                        <div class="dish-details">
+                            <div class="dish-rating"><i class="fas fa-star"></i> 4.8 (110+ reviews)</div>
+                            <h3 class="dish-title">Cold Mezze Platter</h3>
+                            <p class="dish-desc">A selection of traditional Hummus, Baba Ganoush, Haydari, served with warm puff bread.</p>
+                            <div class="dish-footer">
+                                <span class="dish-price">$14.00</span>
+                                <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recommended item 3 -->
+                    <div class="dish-card">
+                        <div class="dish-img-wrapper">
+                            <img class="dish-img" src="assets/dish_3.jpg" alt="Baklava">
+                            <span class="dish-tag">Sweet Treat</span>
+                        </div>
+                        <div class="dish-details">
+                            <div class="dish-rating"><i class="fas fa-star"></i> 4.9 (240+ reviews)</div>
+                            <h3 class="dish-title">Premium Pistachio Baklava</h3>
+                            <p class="dish-desc">Layers of flaky fillo pastry filled with crushed Antep pistachios and sweet lemon syrup.</p>
+                            <div class="dish-footer">
+                                <span class="dish-price">$8.50</span>
+                                <button class="btn-add-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Order History Subpage -->
+            <div id="order-history-subpage" class="subpage-content">
+                <div class="table-header">
+                    <h3 class="table-title"><i class="fas fa-history" style="color: var(--primary); margin-right: 10px;"></i>Your Order History</h3>
+                </div>
+                <div style="display: flex; gap: 30px; align-items: start; flex-wrap: wrap; margin-top: 20px;">
+                    <div style="flex: 2; min-width: 300px;">
+                        <div class="table-wrapper" style="margin-top: 0; box-shadow: none; border: 1px solid rgba(0,0,0,0.08);">
+                            <table class="dash-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Items Ordered</th>
+                                        <th>Bill Paid</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#STK-73910</strong></td>
+                                        <td>June 28, 2026</td>
+                                        <td>1x Lamb Shish, 1x Premium Pistachio Baklava</td>
+                                        <td><strong>$28.00</strong></td>
+                                        <td>
+                                            <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="window.location.href='404.html'">Reorder</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#STK-72810</strong></td>
+                                        <td>June 15, 2026</td>
+                                        <td>2x Stackly Kofta Burger, 1x Soda</td>
+                                        <td><strong>$31.50</strong></td>
+                                        <td>
+                                            <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="window.location.href='404.html'">Reorder</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#STK-71542</strong></td>
+                                        <td>May 24, 2026</td>
+                                        <td>1x Signature Adana Kebab, 1x Kunefe</td>
+                                        <td><strong>$28.98</strong></td>
+                                        <td>
+                                            <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="window.location.href='404.html'">Reorder</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; text-align: center; background: var(--bg-gray); padding: 24px; border-radius: var(--border-radius); border: 1px solid rgba(0,0,0,0.05);">
+                        <img src="assets/past_orders.webp" alt="Past Orders Illustration" style="max-width: 100%; height: auto; border-radius: var(--border-radius); filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1)); margin-bottom: 15px;">
+                        <h4 style="font-family: var(--font-serif); margin-bottom: 8px;">Order History Summary</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">You have ordered 3 delicious meals from Stackly since joining the club. Keep ordering to unlock more rewards!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= MANAGER DASHBOARD CONTAINER ================= -->
+        <div id="manager-dashboard" class="dashboard-container dashboard-section">
+            
+            <!-- Manager Hero Subpage -->
+            <div id="manager-dashboard-subpage" class="subpage-content active">
+                <div class="dashboard-hero" style="background-image: url('assets/manager_banner.jpg'); background-size: cover; background-position: center;">
+                    <div class="dashboard-hero-content">
+                        <span>Restaurant Admin Center</span>
+                        <h2>Stackly Control Hub</h2>
+                        <p>Monitor kitchen performance, track online staff, manage active deliveries, and view real-time revenue analytics.</p>
+                    </div>
+                    <div class="dash-card" style="border-left: 5px solid var(--accent); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); min-width: 280px; padding: 20px;">
+                        <div class="switch-control">
+                            <span class="switch-label">Store Operations</span>
+                            <label class="switch-input-wrapper">
+                                <input type="checkbox" id="store-toggle" checked onchange="toggleStoreStatus()">
+                                <span class="slider-switch"></span>
+                            </label>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 10px;">
+                            <span>Status: <strong style="color:#2e7d32;" id="store-status-text">OPEN</strong></span>
+                            <span>Kitchen: <strong style="color:var(--primary)" id="kitchen-load">NORMAL</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI & Stats Subpage -->
+            <div id="manager-kpis-subpage" class="subpage-content">
+                <!-- KPI Row (Grid of 4 stats) -->
+                <div class="grid-4" id="manager-kpis">
+                    <div class="dash-card">
+                        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-value">$4,289.50</div>
+                        <div class="stat-label">Today's Revenue</div>
+                        <div class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> +12.4% vs yesterday</div>
+                    </div>
+                    <div class="dash-card" style="border-left-color: var(--primary)">
+                        <div class="stat-icon" style="color: var(--primary)"><i class="fas fa-utensils"></i></div>
+                        <div class="stat-value" id="active-orders-count">8</div>
+                        <div class="stat-label">Active Orders</div>
+                        <div class="stat-trend" style="color: var(--text-muted)">In preparation &amp; transit</div>
+                    </div>
+                    <div class="dash-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-value">18m</div>
+                        <div class="stat-label">Avg. Prep Time</div>
+                        <div class="stat-trend trend-up"><i class="fas fa-arrow-down"></i> -2.5 mins (Good)</div>
+                    </div>
+                    <div class="dash-card" style="border-left-color: #4caf50">
+                        <div class="stat-icon" style="color: #4caf50"><i class="fas fa-motorcycle"></i></div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Delivery Staff</div>
+                        <div class="stat-trend trend-up"><i class="fas fa-circle"></i> Active &amp; Online</div>
+                    </div>
+                </div>
+
+                <div class="manager-chart-row" style="align-items: start; margin-top: 30px;">
+                    <!-- Real-time Sales Revenue Chart (Dynamic SVG) -->
+                    <div class="chart-container">
+                        <div class="table-header">
+                            <h3 class="table-title">Hourly Sales Performance</h3>
+                            <span style="font-size:0.9rem; color:var(--text-muted); font-weight:700;">Revenue ($) by Hour</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <svg viewBox="0 0 500 220" style="width: 100%; height: auto;">
+                                <!-- Horizontal Grid Lines -->
+                                <line x1="40" y1="30" x2="480" y2="30" class="grid-line" />
+                                <line x1="40" y1="80" x2="480" y2="80" class="grid-line" />
+                                <line x1="40" y1="130" x2="480" y2="130" class="grid-line" />
+                                <line x1="40" y1="180" x2="480" y2="180" class="grid-line" style="stroke: #bbb;" />
+
+                                <!-- Axes labels -->
+                                <text x="15" y="35" font-size="10" fill="#777">1000</text>
+                                <text x="15" y="85" font-size="10" fill="#777">600</text>
+                                <text x="15" y="135" font-size="10" fill="#777">300</text>
+                                <text x="15" y="185" font-size="10" fill="#777">0</text>
+
+                                <!-- Bars (Sales for 11am, 1pm, 3pm, 5pm, 7pm, 9pm) -->
+                                <rect x="60" y="90" width="35" height="90" class="chart-bar" rx="4" onclick="alert('Sales at 11 AM: $600.00')" />
+                                <text x="65" y="200" font-size="9" fill="#555">11:00</text>
+
+                                <rect x="130" y="60" width="35" height="120" class="chart-bar" rx="4" onclick="alert('Sales at 1:00 PM: $800.00')" />
+                                <text x="135" y="200" font-size="9" fill="#555">13:00</text>
+
+                                <rect x="200" y="120" width="35" height="60" class="chart-bar" rx="4" onclick="alert('Sales at 3:00 PM: $400.00')" />
+                                <text x="205" y="200" font-size="9" fill="#555">15:00</text>
+
+                                <rect x="270" y="80" width="35" height="100" class="chart-bar" rx="4" onclick="alert('Sales at 5:00 PM: $660.00')" />
+                                <text x="275" y="200" font-size="9" fill="#555">17:00</text>
+
+                                <rect x="340" y="40" width="35" height="140" class="chart-bar" rx="4" onclick="alert('Sales at 7:00 PM: $930.00')" />
+                                <text x="345" y="200" font-size="9" fill="#555">19:00</text>
+
+                                <rect x="410" y="65" width="35" height="115" class="chart-bar" rx="4" onclick="alert('Sales at 9:00 PM: $780.00')" />
+                                <text x="415" y="200" font-size="9" fill="#555">21:00</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Staff Availability -->
+                    <div class="dash-card animate-pulse">
+                        <h3 class="table-title" style="margin-bottom:15px;"><i class="fas fa-id-card-alt" style="color:var(--primary); margin-right:8px;"></i>Kitchen Staff</h3>
+                        <ul style="list-style: none;">
+                            <li style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);">
+                                <div>
+                                    <strong>Chef Ahmet Y.</strong><br>
+                                    <span style="font-size:0.8rem; color:var(--text-muted);">Main Grills Master</span>
+                                </div>
+                                <span class="badge badge-online">Online</span>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05);">
+                                <div>
+                                    <strong>Chef Selin K.</strong><br>
+                                    <span style="font-size:0.8rem; color:var(--text-muted);">Baklava &amp; Appetizers</span>
+                                </div>
+                                <span class="badge badge-online">Online</span>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+                                <div>
+                                    <strong>Rider Can B.</strong><br>
+                                    <span style="font-size:0.8rem; color:var(--text-muted);">Express Dispatcher</span>
+                                </div>
+                                <span class="badge badge-busy">On Trip</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Orders Dashboard Table Subpage -->
+            <div id="manager-orders-subpage" class="subpage-content">
+                <div class="table-wrapper" id="manager-orders">
+                    <div class="table-header">
+                        <h3 class="table-title"><i class="fas fa-clipboard-list" style="color:var(--primary); margin-right:10px;"></i>Active Order Queue</h3>
+                        <button class="btn-primary" style="padding:8px 18px; font-size:0.9rem;" onclick="simulateNewOrder()">Simulate Incoming Order</button>
+                    </div>
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items Selected</th>
+                                <th>Bill Total</th>
+                                <th>Preparation Status</th>
+                                <th>Manager Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-queue-body">
+                            <tr id="row-89240">
+                                <td><strong>#TRK-89240</strong></td>
+                                <td>John Doe (Foodie)</td>
+                                <td>1x Adana Kebab, 1x Kunefe</td>
+                                <td><strong>$28.98</strong></td>
+                                <td><span class="badge badge-preparing" id="status-89240">Preparing</span></td>
+                                <td>
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="advanceOrderStatus('89240')">Advance Status</button>
+                                </td>
+                            </tr>
+                            <tr id="row-89239">
+                                <td><strong>#TRK-89239</strong></td>
+                                <td>Sarah Jenkins</td>
+                                <td>2x Lahmacun Pizza, 1x Soda</td>
+                                <td><strong>$27.00</strong></td>
+                                <td><span class="badge badge-delivering" id="status-89239">Delivering</span></td>
+                                <td>
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="advanceOrderStatus('89239')">Advance Status</button>
+                                </td>
+                            </tr>
+                            <tr id="row-89238">
+                                <td><strong>#TRK-89238</strong></td>
+                                <td>David Kovic</td>
+                                <td>1x Signature Adana Kebab</td>
+                                <td><strong>$18.99</strong></td>
+                                <td><span class="badge badge-completed" id="status-89238">Completed</span></td>
+                                <td>
+                                    <span style="color:#2e7d32; font-weight:700; font-size:0.9rem;">Archived</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Manage Menu Subpage -->
+            <div id="manager-menu-subpage" class="subpage-content">
+                <div class="table-header">
+                    <h3 class="table-title"><i class="fas fa-edit" style="color: var(--primary); margin-right: 10px;"></i>Manage Store Menu</h3>
+                    <button class="btn-primary" style="padding:8px 18px; font-size:0.9rem;" onclick="window.location.href='404.html'">Add New Dish</button>
+                </div>
+                <div class="table-wrapper" style="margin-top: 20px; box-shadow: none; border: 1px solid rgba(0,0,0,0.08);">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Dish Title</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Current Stock Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Signature Adana Kebab</strong></td>
+                                <td>Meat &amp; Grills</td>
+                                <td><strong>$18.99</strong></td>
+                                <td><span class="badge badge-online">In Stock</span></td>
+                                <td>
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem; background-color: #f0ad4e;" onclick="window.location.href='404.html'">Toggle Availability</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lahmacun Pizza</strong></td>
+                                <td>Pizzas</td>
+                                <td><strong>$12.50</strong></td>
+                                <td><span class="badge badge-online">In Stock</span></td>
+                                <td>
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem; background-color: #f0ad4e;" onclick="window.location.href='404.html'">Toggle Availability</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hot Cheese Künefe</strong></td>
+                                <td>Desserts</td>
+                                <td><strong>$9.99</strong></td>
+                                <td><span class="badge badge-busy">Out of Stock</span></td>
+                                <td>
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem; background-color: #4caf50;" onclick="window.location.href='404.html'">Toggle Availability</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <!-- AOS & GSAP CDN Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom script for dashboard logic -->
+    <script src="dashboard.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
